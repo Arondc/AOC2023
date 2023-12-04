@@ -2,7 +2,6 @@ package de.startat.aoc2023
 
 class Day1 {
     private val literalReplacements = sequenceOf(
-        "zero" to 0,
         "one" to 1,
         "two" to 2,
         "three" to 3,
