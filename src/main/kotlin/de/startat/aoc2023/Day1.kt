@@ -13,11 +13,11 @@ class Day1 {
         "nine" to 9
     )
 
-    fun part1() {
+    fun star1() {
         calculateSolution(false)
     }
 
-    fun part2() {
+    fun star2() {
         calculateSolution(true)
     }
 
