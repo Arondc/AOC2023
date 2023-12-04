@@ -1,10 +1,10 @@
 package de.startat.aoc2023
 
 data class Play(val shownRed: Int, val shownGreen: Int, val shownBlue: Int)
-data class Game(val id: Int, val plays: List<Play>) {
-    fun isValid(maxRed: Int, maxGreen: Int, maxBlue: Int): Boolean =
-        plays.all { play -> play.shownRed <= maxRed && play.shownGreen <= maxGreen && play.shownBlue <= maxBlue }
-}
+data class Game(val id: Int, val plays: List<Play>)
+
+fun isValid(game : Game, maxRed: Int, maxGreen: Int, maxBlue: Int): Boolean =
+    game.plays.all { play -> play.shownRed <= maxRed && play.shownGreen <= maxGreen && play.shownBlue <= maxBlue }
 
 fun leastCubes(game: Game): Triple<Int, Int, Int> {
     return Triple(game.plays.maxOf { it.shownRed },
@@ -32,7 +32,7 @@ fun String.parsePlay(): Play {
 
 class Day2 {
     fun star1() {
-        val result = day2Input.lines().map { it.parseGame() }.filter { it.isValid(12, 13, 14) }
+        val result = day2Input.lines().map { it.parseGame() }.filter { isValid(it,12, 13, 14) }
             .fold(0) { acc, game -> acc + game.id }
         println("Lösung für Stern 1: $result")
     }
