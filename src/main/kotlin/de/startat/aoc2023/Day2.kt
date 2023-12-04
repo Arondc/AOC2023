@@ -1,13 +1,15 @@
 package de.startat.aoc2023
 
 data class Play(val shownRed: Int, val shownGreen: Int, val shownBlue: Int)
-data class Game(val id: Int, val plays: List<Play>){
+data class Game(val id: Int, val plays: List<Play>) {
     fun isValid(maxRed: Int, maxGreen: Int, maxBlue: Int): Boolean =
         plays.all { play -> play.shownRed <= maxRed && play.shownGreen <= maxGreen && play.shownBlue <= maxBlue }
 }
 
-fun leastCubes(game : Game) : Triple<Int,Int,Int> {
-    return Triple(game.plays.maxOf { it.shownRed }, game.plays.maxOf { it.shownGreen }, game.plays.maxOf { it.shownBlue } )
+fun leastCubes(game: Game): Triple<Int, Int, Int> {
+    return Triple(game.plays.maxOf { it.shownRed },
+        game.plays.maxOf { it.shownGreen },
+        game.plays.maxOf { it.shownBlue })
 }
 
 val gameId = Regex("Game (\\d*): ")
@@ -15,23 +17,23 @@ val reds = Regex("(\\d*) red")
 val greens = Regex("(\\d*) green")
 val blues = Regex("(\\d*) blue")
 
-fun String.parseGame() : Game {
-    val id : Int = gameId.find(this).let { it?.groupValues?.get(1)?.toInt() ?: -1 }
+fun String.parseGame(): Game {
+    val id: Int = gameId.find(this).let { it?.groupValues?.get(1)?.toInt() ?: -1 }
     val plays = this.dropWhile { it != ':' }.drop(1).split(";").map { it.parsePlay() }.toList()
     return Game(id, plays)
 }
 
-fun String.parsePlay() : Play {
+fun String.parsePlay(): Play {
     val red = reds.find(this).let { it?.groupValues?.get(1)?.toInt() ?: 0 }
     val green = greens.find(this).let { it?.groupValues?.get(1)?.toInt() ?: 0 }
     val blue = blues.find(this).let { it?.groupValues?.get(1)?.toInt() ?: 0 }
-    return Play(red,green,blue)
+    return Play(red, green, blue)
 }
 
 class Day2 {
     fun star1() {
-        val result = day2Input.lines().map { it.parseGame() }.filter { it.isValid(12,13,14) }
-            .fold(0){acc,game -> acc + game.id}
+        val result = day2Input.lines().map { it.parseGame() }.filter { it.isValid(12, 13, 14) }
+            .fold(0) { acc, game -> acc + game.id }
         println("Lösung für Stern 1: $result")
     }
 
