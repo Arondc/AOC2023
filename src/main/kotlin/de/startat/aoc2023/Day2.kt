@@ -17,7 +17,7 @@ val blues = Regex("(\\d*) blue")
 
 fun String.parseGame() : Game {
     val id : Int = gameId.find(this).let { it?.groupValues?.get(1)?.toInt() ?: -1 }
-    val plays = this.dropWhile { it != ':' }.drop(1).trim().split(";").map { it.trim().parsePlay() }.toList()
+    val plays = this.dropWhile { it != ':' }.drop(1).split(";").map { it.parsePlay() }.toList()
     return Game(id, plays)
 }
 
