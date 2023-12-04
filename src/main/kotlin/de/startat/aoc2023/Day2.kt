@@ -39,7 +39,7 @@ class Day2 {
 
     fun star2() {
         val result = day2Input.lines().map { leastCubes(it.parseGame()) }
-            .fold(0) { acc, triple -> acc + triple.first * triple.second * triple.third }
+            .fold(0) { acc, (maxRed,maxGreen,maxBlue) -> acc + maxRed * maxGreen * maxBlue }
         println("Lösung für Stern 2: $result")
     }
 
