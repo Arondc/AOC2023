@@ -5,7 +5,9 @@ import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
 class Aoc2023ApplicationTests {
-    @Test
-    fun contextLoads() {
-    }
+
+	@Test
+	fun contextLoads() {
+	}
+
 }

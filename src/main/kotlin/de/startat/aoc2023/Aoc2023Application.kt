@@ -1,18 +1,11 @@
 package de.startat.aoc2023
 
-import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
-import kotlin.system.exitProcess
 
 @SpringBootApplication
-class Aoc2023Application : CommandLineRunner {
-    override fun run(vararg args: String?) {
-        println("Hello World!")
-        exitProcess(0)
-    }
-}
+class Aoc2023Application
 
 fun main(args: Array<String>) {
-    runApplication<Aoc2023Application>(*args)
+	runApplication<Aoc2023Application>(*args)
 }
