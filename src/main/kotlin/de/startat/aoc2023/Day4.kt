@@ -33,8 +33,7 @@ class Day4 {
         val scratchcards = day4input.lines().map { l -> parseCard(l) }
         scratchcards.withIndex().onEach { (idx, sc) ->
             if (sc.matchingNumbers > 0) {
-                val rangeOfCopiesWon = idx + 1..idx + sc.matchingNumbers
-                rangeOfCopiesWon.forEach { winIdx ->
+                    (idx + 1..idx + sc.matchingNumbers).forEach { winIdx ->
                     scratchcards[winIdx].copiesWon(sc.numberOfCopiesOwned)
                 }
             }
