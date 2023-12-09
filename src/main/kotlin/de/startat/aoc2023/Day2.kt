@@ -1,7 +1,7 @@
 package de.startat.aoc2023
 
-data class Play(val shownRed: Int, val shownGreen: Int, val shownBlue: Int)
-data class Game(val id: Int, val plays: List<Play>)
+data class D2Play(val shownRed: Int, val shownGreen: Int, val shownBlue: Int)
+data class Game(val id: Int, val plays: List<D2Play>)
 
 fun isValid(game : Game, maxRed: Int, maxGreen: Int, maxBlue: Int): Boolean =
     game.plays.all { play -> play.shownRed <= maxRed && play.shownGreen <= maxGreen && play.shownBlue <= maxBlue }
@@ -23,11 +23,11 @@ fun String.parseGame(): Game {
     return Game(id, plays)
 }
 
-fun String.parsePlay(): Play {
+fun String.parsePlay(): D2Play {
     val red = reds.find(this).let { it?.groupValues?.get(1)?.toInt() ?: 0 }
     val green = greens.find(this).let { it?.groupValues?.get(1)?.toInt() ?: 0 }
     val blue = blues.find(this).let { it?.groupValues?.get(1)?.toInt() ?: 0 }
-    return Play(red, green, blue)
+    return D2Play(red, green, blue)
 }
 
 class Day2 {
