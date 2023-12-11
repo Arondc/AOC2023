@@ -4,7 +4,7 @@ class Day10 {
 
     data class Maze(val pipes: Set<Pipe>) {
         val start: Pipe = pipes.first { it.char == 'S' }
-        fun getPipeAt(column: Int, row: Int): Pipe? =
+        private fun getPipeAt(column: Int, row: Int): Pipe? =
             pipes.find { p -> p.column == column && p.row == row }
 
         fun findConnectedPipes(pipe: Pipe): Set<Pipe> =
