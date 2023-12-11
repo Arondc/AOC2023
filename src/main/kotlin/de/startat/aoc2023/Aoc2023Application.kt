@@ -8,8 +8,8 @@ import kotlin.system.exitProcess
 @SpringBootApplication
 class Aoc2023Application : CommandLineRunner {
 	override fun run(vararg args: String?) {
-		Day9().star1()
-		Day9().star2()
+		Day10().star1()
+		Day10().star2()
 		exitProcess(0)
 	}
 }
